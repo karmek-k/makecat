@@ -18,8 +18,16 @@ export function init(
     }
   });
 
+  const exampleYaml = yaml.stringify({
+    data: {
+      name: 'Example Item',
+      description: 'This is an example item.'
+    }
+  });
+
   fs.writeFileSync('makecat.yml', defaultConfig);
   fs.mkdirSync(sourceDirectory);
+  fs.writeFileSync(path.join(sourceDirectory, 'example.yml'), exampleYaml);
 }
 
 export async function build(configPath: string = 'makecat.yml') {
