@@ -11,6 +11,7 @@ export function init(
     makecat: {
       template: 'default',
       output,
+      sourceDirectory,
       document: {
         title: 'Makecat Document',
         lang: 'en'
@@ -25,9 +26,11 @@ export function init(
     }
   });
 
+  const exampleCategory = path.join(sourceDirectory, 'example');
+
   fs.writeFileSync('makecat.yml', defaultConfig);
-  fs.mkdirSync(sourceDirectory);
-  fs.writeFileSync(path.join(sourceDirectory, 'example.yml'), exampleYaml);
+  fs.mkdirSync(exampleCategory, { recursive: true });
+  fs.writeFileSync(path.join(exampleCategory, 'example.yml'), exampleYaml);
 }
 
 export async function build(configPath: string = 'makecat.yml') {
