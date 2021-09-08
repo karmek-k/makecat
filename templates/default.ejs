@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= document.lang %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= document.title %></title>
+  </head>
+  <body>
+    <h1><%= document.title %></h1>
+
+    <h2>Table of contents</h2>
+
+    <ul>
+      <% for (const cat of categories) { %>
+      <li><%= cat.title %></li>
+      <% } %>
+    </ul>
+
+    <h2>Categories</h2>
+
+    <% for (const cat of categories) { %>
+
+    <h3><%= cat.title %></h3>
+    <ul>
+      <% for (const item of cat.items) { %>
+
+      <li><b><%= item.title %></b> - <%= item.description %></li>
+
+      <% } %>
+    </ul>
+
+    <% } %>
+  </body>
+</html>
