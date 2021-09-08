@@ -1,0 +1,9 @@
+{
+  "name": "makecat",
+  "description": "Generates a single document from multiple yaml files",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "repository": "https://github.com/karmek-k/makecat.git",
+  "author": "Bartosz Gleń",
+  "license": "MIT"
+}
