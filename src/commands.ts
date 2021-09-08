@@ -3,7 +3,10 @@ import path from 'path';
 import yaml from 'yaml';
 import ejs from 'ejs';
 
-export function init(output: string = 'index.html', directory: string = '.') {
+export function init(
+  output: string = 'index.html',
+  sourceDirectory: string = 'src'
+) {
   const defaultConfig = yaml.stringify({
     makecat: {
       template: 'default',
@@ -15,7 +18,8 @@ export function init(output: string = 'index.html', directory: string = '.') {
     }
   });
 
-  fs.writeFileSync(path.join(directory, 'makecat.yml'), defaultConfig);
+  fs.writeFileSync('makecat.yml', defaultConfig);
+  fs.mkdirSync(sourceDirectory);
 }
 
 export async function build(configPath: string = 'makecat.yml') {

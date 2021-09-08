@@ -6,7 +6,7 @@ const program = new Command();
 program
   .command('init')
   .argument('[outputFile]')
-  .argument('[directory]')
+  .argument('[sourceDirectory]')
   .description('Initializes a new config file')
   .action(init);
 
