@@ -1,21 +1,14 @@
 import { Command } from 'commander';
+import { init, build } from './commands';
 
 const program = new Command();
 
 program
-  .option('-t --template <filename>', 'template to use', 'default.ejs')
-  .option('-c --config <filename>', 'config file', 'makecat.yml');
-
-program
   .command('init')
+  .argument('[directory]')
   .description('Initializes a new config file')
-  .action(() => console.log('init'));
+  .action(init);
 
-program
-  .command('build')
-  .description('Builds the document')
-  .action(() => console.log('build'));
+program.command('build').description('Builds the document').action(build);
 
-program.parse(process.argv);
-
-export const opts = program.opts();
+export default program;
