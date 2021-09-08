@@ -7,7 +7,11 @@ export function build() {}
 export function init(directory: string = '.') {
   const defaultConfig = yaml.stringify({
     makecat: {
-      template: 'default'
+      template: 'default',
+      document: {
+        title: 'Makecat Document',
+        lang: 'en'
+      }
     }
   });
 
