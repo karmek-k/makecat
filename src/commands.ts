@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
 import ejs from 'ejs';
+import { findYamlItems, getCategoriesAndData } from './utils/search';
 
 export function init(
   output: string = 'index.html',
@@ -21,7 +22,7 @@ export function init(
 
   const exampleYaml = yaml.stringify({
     data: {
-      name: 'Example Item',
+      title: 'Example Item',
       description: 'This is an example item.'
     }
   });
@@ -44,9 +45,13 @@ export async function build(configPath: string = 'makecat.yml') {
     `${config.template}.ejs`
   );
 
+  const categories = (await findYamlItems(config.sourceDirectory)).map(
+    getCategoriesAndData
+  );
+
   const rendered = await ejs.renderFile(templatePath, {
     document: config.document,
-    categories: []
+    categories
   });
 
   fs.writeFileSync(config.output, rendered);
