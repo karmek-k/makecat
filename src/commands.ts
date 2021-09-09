@@ -38,7 +38,7 @@ export function init(
 
 export async function build(configPath: string = 'makecat.yml') {
   const configFile = fs.readFileSync(configPath, 'utf-8');
-  const config = yaml.parse(configFile).makecat;
+  const config = (yaml.parse(configFile) as Config).makecat;
 
   const templatePath = path.join(
     __dirname,
