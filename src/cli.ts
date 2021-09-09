@@ -5,10 +5,15 @@ const program = new Command();
 
 program
   .command('init')
-  .argument('[directory]')
+  .argument('[outputFile]')
+  .argument('[sourceDirectory]')
   .description('Initializes a new config file')
   .action(init);
 
-program.command('build').description('Builds the document').action(build);
+program
+  .command('build')
+  .argument('[configFile]')
+  .description('Builds the document')
+  .action(build);
 
 export default program;
