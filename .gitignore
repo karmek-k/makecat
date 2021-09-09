@@ -106,3 +106,4 @@ dist
 # Makecat output
 makecat.yml
 index.html
+test/
